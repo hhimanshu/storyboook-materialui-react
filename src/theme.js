@@ -9,4 +9,7 @@ export const theme = createMuiTheme({
             main: '#0336ff',
         },
     },
+    typography: {
+        fontFamily: ['Raleway']
+    }
 });
