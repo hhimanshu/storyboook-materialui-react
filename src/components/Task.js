@@ -38,7 +38,7 @@ export default function Task(
         </Grid>
         <Grid item xs={1}>
           <StarRate
-            color={state === "TASK_PINNED" ? "secondary" : ""}
+            color={state === "TASK_PINNED" ? "secondary" : "inherit"}
             onClick={onPinTask}
           />
         </Grid>
