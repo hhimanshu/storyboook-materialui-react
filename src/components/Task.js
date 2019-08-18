@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    backgroundColor: theme.palette.primary[50]
+    backgroundColor: theme.palette.primary[600]
   }
 }));
 
