@@ -4,6 +4,7 @@ import Task from "./Task";
 import { makeStyles } from "@material-ui/styles";
 import { Grid, CircularProgress, Typography } from "@material-ui/core";
 import { Check } from "@material-ui/icons";
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -37,9 +38,14 @@ function TaskList({ loading, tasks, onPinTask, onArchiveTask }, props) {
     return <Empty classes={classes} />;
   }
 
+  const tasksInOrder = [
+    ...tasks.filter(t => t.state === "TASK_PINNED"),
+    ...tasks.filter(t => t.state !== "TASK_PINNED")
+  ];
+
   return (
     <Grid container spacing={1} className={classes.root} justify={"center"}>
-      {tasks.map(task => (
+      {tasksInOrder.map(task => (
         <Grid item xs={12}>
           <Task key={task.id} task={task} {...events} />
         </Grid>
@@ -80,5 +86,16 @@ const Empty = ({ classes }) => (
     </Grid>
   </Grid>
 );
+
+TaskList.propTypes = {
+  loading: PropTypes.bool,
+  tasks: PropTypes.arrayOf(Task.propTypes.task).isRequired,
+  onPinTask: PropTypes.func.isRequired,
+  onArchiveTask: PropTypes.func.isRequired,
+};
+
+TaskList.defaultProps = {
+  loading: false,
+};
 
 export default TaskList;
