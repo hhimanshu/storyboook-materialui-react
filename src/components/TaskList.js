@@ -45,9 +45,9 @@ function TaskList({ loading, tasks, onPinTask, onArchiveTask }, props) {
 
   return (
     <Grid container spacing={1} className={classes.root} justify={"center"}>
-      {tasksInOrder.map(task => (
+      {tasksInOrder.map((task, i) => (
         <Grid item xs={12}>
-          <Task key={task.id} task={task} {...events} />
+          <Task key={task.i} task={task} {...events} />
         </Grid>
       ))}
     </Grid>
