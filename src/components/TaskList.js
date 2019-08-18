@@ -7,7 +7,15 @@ import {Grid} from "@material-ui/core";
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(1),
-  }
+  },
+  loading: {
+    padding: theme.spacing(4),
+    backgroundColor: theme.palette.primary[100],
+  },
+  empty: {
+    padding: theme.spacing(4),
+    backgroundColor: theme.palette.primary[100],
+  },
 }));
 
 function TaskList({ loading, tasks, onPinTask, onArchiveTask }, props) {
@@ -19,11 +27,11 @@ function TaskList({ loading, tasks, onPinTask, onArchiveTask }, props) {
   };
 
   if (loading) {
-    return <div className="list-items">loading</div>;
+    return <div className={classes.loading}>loading</div>;
   }
 
   if (tasks.length === 0) {
-    return <div className="list-items">empty</div>;
+    return <div className={classes.empty}>empty</div>;
   }
 
   return (
